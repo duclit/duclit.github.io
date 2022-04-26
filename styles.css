@@ -102,7 +102,7 @@ body {
 }
 
 ::selection {
-    background-color: #D3D3D3;
+    background-color: #FFFFFF;
     color: #000000;
 }
 
@@ -126,14 +126,14 @@ body {
 
 button, p, svg {
     animation-name: startupAnimation;
-    animation-duration: 0.8s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
 }
 
 @keyframes startupAnimation {
     0% {
-        margin-top: 50px;
-        opacity: 0%;
+        margin-top: 25px;
+        opacity: -50%;
     }
 
     100% {
