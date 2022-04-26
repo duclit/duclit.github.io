@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #060608;
+}
+
+body {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+
+    background-color: var(--background);
+
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.description {
+    font-family: 'Readex Pro';
+    font-size: 24px;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.auto-size {
+    width: 758px;
+    height: 150px;
+}
+
+::selection {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+@media only screen and (max-width: 650px) {
+    .description {
+        font-size: 3.7vw;
+    }
+}
