@@ -72,6 +72,29 @@ body {
     margin-right: auto;
 }
 
+.button {
+    font-family: 'Readex Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    width: 150px;
+    height: 50px;
+
+    color: #FFFFFF;
+    border: 1.5px solid #FFFFFF;
+    background-color: var(--background);
+    transition-duration: 0.2s;
+    
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: var(--background);
+}
+
 .contact-n-socials {
     width: 90vw;
     height: 65px;
@@ -79,16 +102,42 @@ body {
 }
 
 ::selection {
-    background-color: #FFFFFF;
+    background-color: #D3D3D3;
     color: #000000;
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
 }
 
 @media only screen and (max-width: 650px) {
     .description {
         font-size: 3.7vw;
+    }
+}
+
+button, p, svg {
+    animation-name: startupAnimation;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+}
+
+@keyframes startupAnimation {
+    0% {
+        margin-top: 50px;
+        opacity: 0%;
+    }
+
+    100% {
+        margin-top: 0px;
+        opacity: 100%;
     }
 }
