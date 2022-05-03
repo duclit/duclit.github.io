@@ -38,6 +38,23 @@ body {
     background-image: url("background.png")    
 }
 
+.bg-light {
+    background-image: url("background-light.png")    
+}
+
+.light {
+    background-color: #F3F3F6;
+}
+
+.dark {
+    color: #060608 !important;
+}
+
+.dark::selection {
+    background-color: #060608;
+    color: #FFFFFF;
+}
+
 .flex {
     display: flex;
     align-items: center;
