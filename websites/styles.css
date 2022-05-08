@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #060608;
+}
+
+body {
+    background-color: var(--background);
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.websites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+    min-width: 576px;
+
+    margin-top: 77px;
+}
+
+.heading {
+    width: 198px;
+    height: 60px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+
+    color: #FFFFFF;
+
+    margin-top: 110px;
+}
+
+.description {
+    width: 329px;
+    height: 24px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.website {
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 24px;
+
+    width: 576px;
+    height: 136px;
+
+    background: #FFFFFF;
+    border-radius: 12px;
+
+    margin-bottom: 24px;
+}
+
+.website-name {
+    position: static;
+    width: 366px;
+    height: 23px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.website-description {
+    position: static;
+    width: 411px;
+    height: 18px;
+    left: 0px;
+    top: 29px;
+
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+
+    color: #3C3C43;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    margin-top: 6px;
+}
+
+.website-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 528px;
+    height: 15px;
+    left: 0px;
+    top: 18px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+
+.website-link {
+    position: static;
+    width: 95px;
+    height: 15px;
+    left: 0px;
+    top: 0px;
+
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.04em;
+
+    color: #0060FF;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    cursor: pointer;
+}
+
+.website-category {
+    position: static;
+    width: 82px;
+    height: 15px;
+    left: 446px;
+    top: 0px;
+
+    font-family: 'Source Code Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+
+    align-items: center;
+    text-align: right;
+    
+    letter-spacing: -0.04em;
+
+    color: rgba(102, 102, 102, 0.8);
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin-left: 351px;
+}
+
+::selection {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+}
+
+@media only screen and (max-width: 600px) {
+    .website {
+        width: 25em;
+    }
+}
