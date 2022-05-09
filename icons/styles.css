@@ -7,6 +7,18 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: #4363FB;
+
+    transition-duration: 0.2s;
+}
+
+a:hover {
+    background-color: #4363FB;
+    color: #fff;
+}
+
 :root {
     --background: #060608;
 }
@@ -45,7 +57,7 @@ body {
 }
 
 .heading {
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Segoe UI';
     font-style: normal;
     font-weight: 900;
     font-size: 40px;
@@ -56,13 +68,26 @@ body {
 }
 
 .description {
-    font-family: 'Poppins';
+    font-family: 'Poppins', 'Segoe UI';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
 
     text-align: center;
     color: #FFFFFF;
+}
+
+.footer {
+    font-family: 'Poppins', 'Segoe UI';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    text-align: center;
+    color: #777777;
+
+    position: absolute;
+    bottom: 50px;
 }
 
 ::selection {
