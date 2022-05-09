@@ -218,11 +218,12 @@ body {
 
 @media only screen and (max-width: 600px) {
     .website {
-        width: 80vw;
+        width: 88vw;
     }
 
     .website-description {
-        width: 70vw;
+        width: 75vw;
         word-wrap: normal;
+        font-size: 0.74rem;
     }
 }
