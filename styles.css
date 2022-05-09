@@ -13,6 +13,8 @@
 body {
     background-color: var(--background);
     overflow-x: hidden;
+
+    text-rendering: optimizeLegibility;
 }
 
 .icon {
@@ -32,6 +34,8 @@ body {
 .section {
     min-height: 100vh;
     min-width: 100vw;
+
+    text-rendering: optimizeLegibility;
 }
 
 .bg {
