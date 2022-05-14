@@ -40,41 +40,42 @@ function refreshTaskEventHandlers() {
     });
 }
 
-function keydownEvent(key) {
-    if (key.code === "Enter") {
-        if (newTask.value.trim() === '') {
-            return;
-        }
-
-        let value = newTask.value
-            .replace(/\_(.+)\_/, '<em>&nbsp;$1&nbsp;</em>')
-            .replace(/\*(.+)\*/, '<b>&nbsp;$1&nbsp;</b>')
-            .replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/, '<a href="$1">$1</a>');
-
-        let node = document.createElement("div");
-        node.innerHTML =
-            `
-                <button class="task-check"></button>
-                <p class="task-name">${newTask.value}</p>
-                <button class="task-remove">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 8.5L8.5 15.5" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M8.5 8.5L15.5 15.5" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-            `;
-
-        newTask.value = '';
-        node.classList.add('task');
-
-        refreshButtonListeners(node);
-        document.getElementById('main').prepend(node);
+function addTask() {
+    if (newTask.value.trim() === '') {
+        return;
     }
+
+    let value = newTask.value
+        .replace(/\_(.+)\_/, '<em>&nbsp;$1&nbsp;</em>')
+        .replace(/\*(.+)\*/, '<b>&nbsp;$1&nbsp;</b>')
+        .replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/, '<a href="$1">$1</a>');
+
+    let node = document.createElement("div");
+    node.innerHTML =
+        `
+            <button class="task-check"></button>
+            <p class="task-name">${value}</p>
+            <button class="task-remove">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.5 8.5L8.5 15.5" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.5 8.5L15.5 15.5" stroke="#6A6A6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        `;
+
+    newTask.value = '';
+    node.classList.add('task');
+
+    refreshButtonListeners(node);
+    document.getElementById('main').prepend(node);
+}
+
+function keydownEvent(key) {
+    if (key.code === "Enter") addTask()
 }
 
 newTask.addEventListener("keydown", keydownEvent);
 document.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter')
-        newTask.focus();
+    if (e.code === 'Enter') newTask.focus();
 });
 refreshTaskEventHandlers();
