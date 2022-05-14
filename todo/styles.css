@@ -152,7 +152,7 @@ button {
 }
 
 .new-task {
-    width: 446px;
+    width: calc(var(--width) - 48px);
     height: 48px;
 
     padding-left: 6px;
@@ -179,11 +179,6 @@ button {
 
 .new-task::placeholder {
     color: var(--grey);
-}
-
-.input-container:focus-within {
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
 }
 
 @media only screen and (max-width: 740px) {
@@ -281,4 +276,9 @@ button {
     gap: 6px;
 
     box-sizing: border-box;
+}
+
+.input-container:focus-within {
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
 }
