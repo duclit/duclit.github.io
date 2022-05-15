@@ -183,7 +183,7 @@ button {
 
 @media only screen and (max-width: 740px) {
     :root {
-        --width: 70vw;
+        --width: 80vw;
     }
 }
 
