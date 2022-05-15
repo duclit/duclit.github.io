@@ -1,5 +1,15 @@
-const newTask = document.getElementById("main").querySelectorAll(".new-task")[0];
+const modals = [
+    ['Welcome to Todo', 'A todo app that focuses on simplicity and usability.', './assets/welcome.svg'],
+    ['Groupings', 'Group your tasks with colors.', './assets/groupings.svg'],
+    ['Recurring tasks', 'Do the same stuff every day? Configure Todo to automatically add tasks every day.', './assets/recurring.svg'],
+    ['That’s it!', 'We hope you enjoy using Todo.', './assets/done.svg'],
+]
+let currentModal = 0;
+
+const newTask = document.getElementById("task-input");
 let tasks = document.getElementById("main").querySelectorAll(".task");
+
+let currentColor = 'none';
 
 function refreshButtonListeners(task) {
     for (const check of task.getElementsByClassName('task-check')) {
@@ -12,29 +22,27 @@ function refreshButtonListeners(task) {
                     </svg>
                 `
                 task.getElementsByClassName('task-name')[0].classList.add('strike');
-                task.classList.add('translucent');
             }
             else {
                 check.innerHTML = ``
                 task.getElementsByClassName('task-name')[0].classList.remove('strike');
-                task.classList.remove('translucent');
             }
 
             saveTasks();
         });
     }
 
-  for (const remove of task.getElementsByClassName('task-remove')) {
-    remove.addEventListener('click', () => {
-        task.classList.add('fadeout');
-        task.addEventListener('animationend', (e) => {
-            if (e.animationName == 'remove') {
-                task.remove();
-            }
+    for (const remove of task.getElementsByClassName('task-remove')) {
+        remove.addEventListener('click', () => {
+            task.classList.add('fadeout');
+            task.addEventListener('animationend', (e) => {
+                if (e.animationName == 'remove') {
+                    task.remove();
+                }
+                saveTasks();
+            });
         });
-        saveTasks();
-    });
-  }
+    }
 }
 
 function refreshTaskEventHandlers() {
@@ -68,6 +76,7 @@ function addTask() {
 
     newTask.value = '';
     node.classList.add('task');
+    node.style.borderLeft = `2px solid ${color_picker.value}`
 
     refreshButtonListeners(node);
     document.getElementById('main').prepend(node);
@@ -76,6 +85,7 @@ function addTask() {
 }
 
 function keydownEvent(key) {
+    console.log(key.code);
     if (key.code === "Enter") addTask()
 }
 
@@ -83,16 +93,18 @@ newTask.addEventListener("keydown", keydownEvent);
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Enter') newTask.focus();
 });
-refreshTaskEventHandlers();
 
 function saveTasks() {
     const tasks = [];
 
     for (const item of document.getElementsByClassName('task')) {
+        console.log(item.style.borderLeft);
+        
         tasks.push(
             [
                 item.getElementsByClassName('task-name')[0].innerText, 
-                item.getElementsByClassName('task-check')[0].innerHTML.trim() !== ''
+                item.getElementsByClassName('task-check')[0].innerHTML.trim() !== '',
+                item.style.borderLeft
             ]
         );
     }
@@ -116,12 +128,17 @@ function loadTasks() {
                 </button>
             </div>
             `
+        
+        nextModal();
+    } else {
+        document.getElementById('modal').remove();
+        refreshTaskEventHandlers();
     }
 
     const tasks = JSON.parse(localStorage.getItem('tasks'));
     tasks.reverse();
 
-    for (const [name, done] of tasks) {
+    for (const [name, done, color] of tasks) {
         let node = document.createElement("div");
         node.innerHTML =
             `
@@ -144,10 +161,10 @@ function loadTasks() {
 
         newTask.value = '';
         node.classList.add('task');
+        node.style.borderLeft = color;
 
         if (done) {
             node.classList.add('strike');
-            node.classList.add('translucent');
         }
 
         refreshButtonListeners(node);
@@ -155,4 +172,50 @@ function loadTasks() {
     }
 }
 
+// modal
+
 loadTasks();
+
+function nextModal() {
+    if (currentModal + 1 > 4) {
+        document.getElementById('modal').remove();
+        refreshTaskEventHandlers();
+        newTask.addEventListener("keydown", keydownEvent);
+        return;
+    }
+    
+    const data = modals[currentModal];
+    const image = data[2];
+    const title = data[0];
+    const description = data[1];
+    
+    document.getElementById('modal').innerHTML = 
+        `
+        <div class="modal-content">
+            <img src="${image}" class="modal-anim-in">
+            <div class="modal-heading-container modal-anim-in">
+                <p class="modal-heading">${title}</p>
+            </div>
+            <div class="modal-description-container modal-anim-in">
+                <p class="modal-description">${description}</p>
+            </div>
+            <button class="next-button modal-anim-in" onclick="nextModal()">Next</button>
+        </div>
+        `
+
+    currentModal += 1;
+}
+
+refreshTaskEventHandlers();
+
+let color_picker = document.getElementById("input-color-inner");
+let color_picker_wrapper = document.getElementById("input-color");
+
+color_picker.value = "#2176FF";
+
+color_picker.onchange = function() {
+	color_picker_wrapper.style.backgroundColor = color_picker.value;
+    document.getElementById('input').style.borderLeft = `2px solid ${color_picker.value}`
+}
+color_picker_wrapper.style.backgroundColor = color_picker.value;
+document.getElementById('input').style.borderLeft = `2px solid ${color_picker.value}`
