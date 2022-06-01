@@ -77,9 +77,8 @@ a:hover {
 }
 
 @media only screen and (max-width: 700px) {
-    p {
-        width: 60vw;
-    }
+    p { width: 60vw }
+    body { padding-left: 13vw }
 }
 
 @keyframes fade-in {
