@@ -60,6 +60,10 @@ p {
     color: white;
 }
 
+.darker {
+    color: grey;
+} 
+
 a {
     transition: opacity 0.2s ease-out;
 }
